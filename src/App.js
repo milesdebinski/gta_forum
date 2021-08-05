@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+// https://github.com/typicode/json-server
+// npm i json-server - "mock" backend
+// add to scripts: "server": "json-server --watch db.json --port 5000"
+// -------------------------------
+import React from "react";
+import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Threads from "./components/Threads/Threads";
+import Posts from "./components/Posts/Posts";
+const App = () => {
+  const [threads, setThreads] = useState([]);
+  const [posts, setPosts] = useState([]);
+  const [threadId, setThreadId] = useState(null);
 
-function App() {
+  useEffect(() => {
+    const getThreads = async () => {
+      const threadsFromServer = await fetchThreads();
+      setThreads(threadsFromServer);
+    };
+    const getPosts = async () => {
+      const postsFromServer = await fetchPosts();
+      setPosts(postsFromServer);
+    };
+    getThreads();
+    getPosts();
+  }, []);
+
+  // Fetch Threads
+  const fetchThreads = async () => {
+    const response = await fetch("http://localhost:5000/threads");
+    const data = await response.json();
+    return data;
+  };
+  // Fetch Posts
+  const fetchPosts = async () => {
+    const response = await fetch("http://localhost:5000/posts");
+    const data = await response.json();
+    return data;
+  };
+  // Set Thread Id
+  const getThreadId = async (id) => {
+    const setId = await id;
+    setThreadId(setId);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Route exact path="/">
+        <Threads threads={threads} threadId={getThreadId} />
+      </Route>
+      <Route exact path="/thread">
+        {threadId !== null && <Posts posts={posts} threadId={threadId} />}
+      </Route>
+    </Router>
   );
-}
+};
 
 export default App;

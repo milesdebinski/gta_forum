@@ -1,0 +1,21 @@
+.thread {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid black;
+  background: #ddd;
+  padding: 10px 20px;
+  margin: 2px;
+}
+.title {
+  background: none;
+  font-size: 20px;
+}
+.title:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.author {
+  background: none;
+  color: purple;
+}
