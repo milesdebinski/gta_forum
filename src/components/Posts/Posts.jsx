@@ -1,14 +1,10 @@
 import React from "react";
 import Post from "./Post/Post";
+import AddPost from "./AddPost/AddPost";
 
-const Posts = ({ posts, threadId }) => {
-  let title = "";
-  let content = [];
-  if (posts.length > 0) {
-    title = posts[threadId].title;
-    content = posts[threadId].content;
-    // fetch single treads instead of the whole api
-  }
+const Posts = ({ threads, threadId, onAdd }) => {
+  let title = threads[threadId].title;
+  let content = threads[threadId].posts;
 
   return (
     <div>
@@ -17,6 +13,7 @@ const Posts = ({ posts, threadId }) => {
         {content.map((post) => (
           <Post key={post.id} post={post} />
         ))}
+        <AddPost onAdd={onAdd} />
       </div>
     </div>
   );

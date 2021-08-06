@@ -1,0 +1,17 @@
+.addPost {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.textArea {
+  background: #fff;
+  border: 2px solid #000;
+  margin: 5px;
+  height: 90px;
+  width: 80%;
+}
+.btn {
+  background: #fff;
+  padding: 8px 15px;
+  cursor: pointer;
+}
