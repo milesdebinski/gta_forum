@@ -1,17 +1,28 @@
 .addPost {
   display: flex;
   justify-content: space-around;
+  align-items: flex-start;
+}
+.formControl {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 .textArea {
   background: #fff;
   border: 2px solid #000;
-  margin: 5px;
   height: 90px;
-  width: 80%;
+  width: 400px;
+}
+.input {
+  background: #fff;
+  padding: 10px;
+ 
 }
 .btn {
   background: #fff;
-  padding: 8px 15px;
+  padding: 8px 25px;
   cursor: pointer;
+  margin: 15px;
 }

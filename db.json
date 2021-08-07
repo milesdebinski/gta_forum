@@ -81,27 +81,7 @@
       "author": "Batriz",
       "creation_date": "5 march 2020",
       "content": "This is just random text",
-      "edit_date": "3 feberuary 2021",
-      "posts": [   
-        {
-          "id": 0,
-          "text": "this is the first post written by batriz in general rules pam",
-          "author": "Batriz",
-          "date": "10 march 2021"
-        },
-        {
-          "id": 1,
-          "text": "second post written by Derek, pam pam",
-          "author": "Derek",
-          "date": "11 march 2021"
-        },
-        {
-          "id": 2,
-          "text": "thirds post pam pam pam",
-          "author": "Batriz",
-          "date": "22 may 2021"
-        }     
-    ]
+      "edit_date": "3 feberuary 2021"
     },
     {
       "creator_id": 1,
@@ -111,27 +91,58 @@
       "author": "Derek",
       "creation_date": "1 june 2020",
       "content": "This is just random txt 2 2 2",
-      "edit_date": "4 feberuary 2021",
-      "posts": [      
-        {
-          "id": 0,
-          "text": "this is post in in game rules - first one",
-          "author": "Derek",
-          "date": "22 march 1990"
-        },
-        {
-          "id": 1,
-          "text": "second post written by Derek, pam pam",
-          "author": "Ryszard",
-          "date": "13 march 1991"
-        },
-        {
-          "id": 2,
-          "text": "thirds post pam pam pam",
-          "author": "Derek",
-          "date": "15 december 1992"
-        }    
-      ] 
-    }    
+      "edit_date": "4 feberuary 2021"
+    }
+  ],
+  "posts": [
+    {
+      "id": 0,
+      "thread_id": 0,
+      "text": "this is the first post written by batriz in general rules pam",
+      "author": "Batriz",
+      "date": "15:22:00 10 march 2021"
+    },
+    {
+      "id": 1,
+      "thread_id": 0,
+      "text": "second post written by Derek, pam pam",
+      "author": "Derek",
+      "date": "11:10:41 11 march 2021"
+    },
+    {
+      "id": 2,
+      "thread_id": 0,
+      "text": "thirds post pam pam pam",
+      "author": "Batriz",
+      "date": "18:44:15 22 may 2021"
+    },
+    {
+      "id": 3,
+      "thread_id": 1,
+      "text": "this is post in in game rules - first one",
+      "author": "Derek",
+      "date": "14:11:15 22 march 1990"
+    },
+    {
+      "id": 4,
+      "thread_id": 1,
+      "text": "second post written by Derek, pam pam",
+      "author": "Ryszard",
+      "date": "10:22:09 13 march 1991"
+    },
+    {
+      "id": 5,
+      "thread_id": 1,
+      "text": "thirds post pam pam pam",
+      "author": "Derek",
+      "date": "12:32:00 15 december 1992"
+    },
+    {
+      "text": "hello, My name is Gregier, I wanna play gta with you guys <3",
+      "author": "Gregier",
+      "date": "14:47:53 7 Aug 2021",
+      "thread_id": 1,
+      "id": 6
+    }
   ]
 }

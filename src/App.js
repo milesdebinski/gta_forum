@@ -9,7 +9,7 @@ import Threads from "./components/Threads/Threads";
 import Posts from "./components/Posts/Posts";
 const App = () => {
   const [threads, setThreads] = useState([]);
-
+  const [posts, setPosts] = useState([]);
   const [threadId, setThreadId] = useState(null);
 
   useEffect(() => {
@@ -17,13 +17,23 @@ const App = () => {
       const threadsFromServer = await fetchThreads();
       setThreads(threadsFromServer);
     };
-
+    const getPosts = async () => {
+      const postsFromServer = await fetchPosts();
+      setPosts(postsFromServer);
+    };
+    getPosts();
     getThreads();
   }, []);
 
   // Fetch Threads
   const fetchThreads = async () => {
     const response = await fetch("http://localhost:5000/threads");
+    const data = await response.json();
+    return data;
+  };
+  // Fetch Posts
+  const fetchPosts = async () => {
+    const response = await fetch("http://localhost:5000/posts");
     const data = await response.json();
     return data;
   };
@@ -35,12 +45,15 @@ const App = () => {
   };
   //  Add New Post << ??? >>
   const addPost = async (content) => {
-    const res = await fetch("http://localhost:5000/threads/posts", {
+    const res = await fetch(`http://localhost:5000/posts`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(content),
     });
-    console.log(res);
+    const id = Math.floor(Math.random() * 10000);
+    const newPost = { id, ...content };
+    setPosts([...posts, newPost]);
+    // console.log(id);
   };
 
   return (
@@ -50,7 +63,12 @@ const App = () => {
       </Route>
       <Route exact path="/thread">
         {threadId !== null && (
-          <Posts threads={threads} threadId={threadId} onAdd={addPost} />
+          <Posts
+            threads={threads}
+            threadId={threadId}
+            posts={posts}
+            onAdd={addPost}
+          />
         )}
       </Route>
     </Router>

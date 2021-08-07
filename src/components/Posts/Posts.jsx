@@ -2,18 +2,20 @@ import React from "react";
 import Post from "./Post/Post";
 import AddPost from "./AddPost/AddPost";
 
-const Posts = ({ threads, threadId, onAdd }) => {
+const Posts = ({ threads, threadId, posts, onAdd }) => {
   let title = threads[threadId].title;
-  let content = threads[threadId].posts;
+  let content = posts;
 
   return (
     <div>
       <h2>{title}</h2>
       <div>
-        {content.map((post) => (
-          <Post key={post.id} post={post} />
-        ))}
-        <AddPost onAdd={onAdd} />
+        {content
+          .filter((post) => post.thread_id === threadId)
+          .map((post) => (
+            <Post key={post.id} post={post} threadId={threadId} />
+          ))}
+        <AddPost onAdd={onAdd} threadId={threadId} />
       </div>
     </div>
   );
