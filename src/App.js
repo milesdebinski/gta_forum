@@ -38,7 +38,6 @@ const App = () => {
     const data = await response.json();
     return data;
   };
-
   // Fetch Threads
   const fetchThreads = async () => {
     const response = await fetch("http://localhost:5000/threads");
@@ -51,7 +50,6 @@ const App = () => {
     const data = await response.json();
     return data;
   };
-
   // Set Thread Id
   const getThreadId = async (id) => {
     const setId = await id;
@@ -72,7 +70,6 @@ const App = () => {
   const registerNewUser = (newUser) => {
     console.log(newUser);
   };
-
   return (
     <Router>
       <Navbar />

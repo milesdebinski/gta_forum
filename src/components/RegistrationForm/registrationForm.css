@@ -13,7 +13,10 @@ label {
 input {
   padding: 5px;
   margin-bottom: 8px;
- 
+}
+input.wrong:focus {
+  color: red;
+  outline: 1px solid red;
 }
 .formControl {
   display: flex;
