@@ -11,7 +11,6 @@ const AddPost = ({ onAdd, threadId }) => {
     // Get current date/time
     let currentDate = new Date();
     const options = {
-      // weekday: "long",
       year: "numeric",
       month: "short",
       day: "numeric",
@@ -25,7 +24,6 @@ const AddPost = ({ onAdd, threadId }) => {
 
     let getDate = currentDate.toLocaleDateString("en-GB", options);
     const date = getTime + " " + getDate;
-    console.log(date);
 
     if (!text) {
       alert("please, write your post!");

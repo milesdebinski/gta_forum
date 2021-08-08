@@ -7,12 +7,19 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Threads from "./components/Threads/Threads";
 import Posts from "./components/Posts/Posts";
+import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
+import Navbar from "./components/Navbar/Navbar";
 const App = () => {
+  const [users, setUsers] = useState([]);
   const [threads, setThreads] = useState([]);
   const [posts, setPosts] = useState([]);
   const [threadId, setThreadId] = useState(null);
 
   useEffect(() => {
+    const getUsers = async () => {
+      const usersFromServer = await fetchUsers();
+      setUsers(usersFromServer);
+    };
     const getThreads = async () => {
       const threadsFromServer = await fetchThreads();
       setThreads(threadsFromServer);
@@ -21,9 +28,16 @@ const App = () => {
       const postsFromServer = await fetchPosts();
       setPosts(postsFromServer);
     };
-    getPosts();
+    getUsers();
     getThreads();
+    getPosts();
   }, []);
+  // Fetch Users
+  const fetchUsers = async () => {
+    const response = await fetch("http://localhost:5000/users");
+    const data = await response.json();
+    return data;
+  };
 
   // Fetch Threads
   const fetchThreads = async () => {
@@ -43,7 +57,7 @@ const App = () => {
     const setId = await id;
     setThreadId(setId);
   };
-  //  Add New Post << ??? >>
+  //  Add New Post
   const addPost = async (content) => {
     const res = await fetch(`http://localhost:5000/posts`, {
       method: "POST",
@@ -53,11 +67,18 @@ const App = () => {
     const id = Math.floor(Math.random() * 10000);
     const newPost = { id, ...content };
     setPosts([...posts, newPost]);
-    // console.log(id);
+  };
+  // Register New User
+  const registerNewUser = (newUser) => {
+    console.log(newUser);
   };
 
   return (
     <Router>
+      <Navbar />
+      <Route exact path="/registration">
+        <RegistrationForm onRegister={registerNewUser} users={users} />
+      </Route>
       <Route exact path="/">
         <Threads threads={threads} threadId={getThreadId} />
       </Route>

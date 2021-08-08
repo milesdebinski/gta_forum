@@ -1,0 +1,30 @@
+h1 {
+  color: #222;
+ 
+  font-size: 30px;
+  margin: 5px;
+}
+ul {
+  list-style: none;
+}
+li {
+  padding: 10px;
+ 
+}
+a:hover {
+ text-decoration: underline;
+ 
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: #eee;
+  border-bottom: 1px solid #000;
+}
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

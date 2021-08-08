@@ -41,17 +41,17 @@
     {
       "id": 0,
       "role_id": 0,
-      "name": "Batriz",
+      "login": "Batriz",
+      "password": "dsad@@1!xxC",
       "email": "baritizir@gmail.com",
-      "password": "Batriz",
       "registration_date": "10 april 2020"
     },
     {
       "id": 1,
       "role_id": 1,
-      "name": "Derek",
+      "login": "Derek",
+      "password": "aaaCCC22W@@ad!x",
       "email": "drerek@gmail.com",
-      "password": "Derek",
       "registration_date": "10 may 2020"
     }
   ],
@@ -143,6 +143,13 @@
       "date": "14:47:53 7 Aug 2021",
       "thread_id": 1,
       "id": 6
+    },
+    {
+      "text": "ram pam pam ram pam pam",
+      "author": "Kajtek",
+      "date": "15:23:12 7 Aug 2021",
+      "thread_id": 1,
+      "id": 7
     }
   ]
 }
