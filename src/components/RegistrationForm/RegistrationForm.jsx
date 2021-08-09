@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./registrationForm.css";
 
+const sha256 = require("sha256");
+// const md5 = require("md5");
+
 const RegistrationForm = ({ onRegister, users }) => {
   const [login, setLogin] = useState("");
   const [validLogin, setValidLogin] = useState(false);
@@ -100,7 +103,14 @@ const RegistrationForm = ({ onRegister, users }) => {
       alert(message);
       return;
     }
-    // stop
+    // const hashLogin = md5(login);
+    const hashPassword = sha256(password);
+    // const hashEmail = md5(email);
+
+    // console.log("Login: ", hashLogin);
+    console.log("Password: ", hashPassword);
+    // console.log("Email: ", hashEmail);
+
     setLogin("");
     setPassword("");
     setRepeatPassword("");
@@ -109,6 +119,9 @@ const RegistrationForm = ({ onRegister, users }) => {
     onRegister({ login, password, email });
     alert("Check your email to complete registration!");
   };
+  // const sha256script = document.createElement('script');
+  // sha256script.src='http://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js'
+  // console.log(sha256)
   return (
     <form onSubmit={onSubmit}>
       <div className="formControl">
