@@ -9,6 +9,7 @@ import Threads from "./components/Threads/Threads";
 import Posts from "./components/Posts/Posts";
 import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
 import Navbar from "./components/Navbar/Navbar";
+import Activated from "./components/Activated/Activated";
 const App = () => {
   const [users, setUsers] = useState([]);
   const [threads, setThreads] = useState([]);
@@ -67,14 +68,45 @@ const App = () => {
     setPosts([...posts, newPost]);
   };
   // Register New User
-  const registerNewUser = (newUser) => {
+  const registerNewUser = async (newUser) => {
+    await fetch(`http://localhost:5000/users`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newUser),
+    });
+    setUsers([...users, newUser]);
     console.log(newUser);
+  };
+  // Get current date/time
+  const getCurrentDate = () => {
+    let currentDate = new Date();
+    const options = {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    };
+    let getTime =
+      currentDate.getHours() +
+      ":" +
+      currentDate.getMinutes() +
+      ":" +
+      currentDate.getSeconds();
+
+    let getDate = currentDate.toLocaleDateString("en-GB", options);
+    return getTime + " " + getDate;
   };
   return (
     <Router>
       <Navbar />
+      <Route exact path="/activated">
+        <Activated />
+      </Route>
       <Route exact path="/registration">
-        <RegistrationForm onRegister={registerNewUser} users={users} />
+        <RegistrationForm
+          getCurrentDate={getCurrentDate}
+          onRegister={registerNewUser}
+          users={users}
+        />
       </Route>
       <Route exact path="/">
         <Threads threads={threads} threadId={getThreadId} />
@@ -82,6 +114,7 @@ const App = () => {
       <Route exact path="/thread">
         {threadId !== null && (
           <Posts
+            getCurrentDate={getCurrentDate}
             threads={threads}
             threadId={threadId}
             posts={posts}

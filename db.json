@@ -53,6 +53,19 @@
       "password": "aaaCCC22W@@ad!x",
       "email": "drerek@gmail.com",
       "registration_date": "10 may 2020"
+    },
+    {
+      "login": "bogdan",
+      "password": "aaaCCC22W@@ad!x",
+      "email": "batrizgasssxming@gmail.com",
+      "date": "22:3:4 10 Aug 2021",
+      "role_id": 2,
+      "id": 2
+    }
+  ],
+  "activationLinks": [
+    {
+      "activationLink": "asidj39uunxasuunx"
     }
   ],
   "categories": [
@@ -150,6 +163,20 @@
       "date": "15:23:12 7 Aug 2021",
       "thread_id": 1,
       "id": 7
+    },
+    {
+      "text": "POZNA GODZINA LALALA",
+      "author": "ZENEK",
+      "date": "21:56:36 10 Aug 2021",
+      "thread_id": 0,
+      "id": 8
+    },
+    {
+      "text": "DRUGO POST W NOCY",
+      "author": "ROMEK",
+      "date": "21:59:38 10 Aug 2021",
+      "thread_id": 0,
+      "id": 9
     }
   ]
 }

@@ -2,7 +2,7 @@ import React from "react";
 import Post from "./Post/Post";
 import AddPost from "./AddPost/AddPost";
 
-const Posts = ({ threads, threadId, posts, onAdd }) => {
+const Posts = ({ threads, threadId, posts, onAdd, getCurrentDate }) => {
   let title = threads[threadId].title;
   let content = posts;
 
@@ -15,7 +15,11 @@ const Posts = ({ threads, threadId, posts, onAdd }) => {
           .map((post) => (
             <Post key={post.id} post={post} threadId={threadId} />
           ))}
-        <AddPost onAdd={onAdd} threadId={threadId} />
+        <AddPost
+          getCurrentDate={getCurrentDate}
+          onAdd={onAdd}
+          threadId={threadId}
+        />
       </div>
     </div>
   );

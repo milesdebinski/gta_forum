@@ -2,28 +2,14 @@ import React from "react";
 import { useState } from "react";
 import "./addpost.css";
 
-const AddPost = ({ onAdd, threadId }) => {
+const AddPost = ({ onAdd, threadId, getCurrentDate }) => {
   const [text, setText] = useState("");
   const [author, setAuthor] = useState("");
+
   const onSubmit = (e) => {
     e.preventDefault();
 
-    // Get current date/time
-    let currentDate = new Date();
-    const options = {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    };
-    let getTime =
-      currentDate.getHours() +
-      ":" +
-      currentDate.getMinutes() +
-      ":" +
-      currentDate.getSeconds();
-
-    let getDate = currentDate.toLocaleDateString("en-GB", options);
-    const date = getTime + " " + getDate;
+    const date = getCurrentDate();
 
     if (!text) {
       alert("please, write your post!");

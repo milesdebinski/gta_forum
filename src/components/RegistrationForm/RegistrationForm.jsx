@@ -1,12 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+
+import { useParams, Link } from "react-router-dom";
 import "./registrationForm.css";
 
 const sha256 = require("sha256");
-// const md5 = require("md5");
 
-const RegistrationForm = ({ onRegister, users }) => {
+const RegistrationForm = ({ onRegister, users, getCurrentDate }) => {
   const [login, setLogin] = useState("");
   const [validLogin, setValidLogin] = useState(false);
 
@@ -78,7 +78,7 @@ const RegistrationForm = ({ onRegister, users }) => {
       setValidPassword(false);
     }
   }, [password]);
-  // live repeat password validation
+  // live repeat-password validation
   useEffect(() => {
     if (!isValidPassword(password, repeatPassword)) {
       setValidRepeatPassword(true);
@@ -96,34 +96,28 @@ const RegistrationForm = ({ onRegister, users }) => {
   }, [email]);
 
   const onSubmit = (e) => {
-    e.preventDefault();
-
     const message = formValidation(login, password, repeatPassword, email);
     if (message) {
       alert(message);
+      e.preventDefault();
       return;
     }
-    // const hashLogin = md5(login);
+    const date = getCurrentDate();
+    const role_id = 2;
     const hashPassword = sha256(password);
-    // const hashEmail = md5(email);
-
-    // console.log("Login: ", hashLogin);
     console.log("Password: ", hashPassword);
-    // console.log("Email: ", hashEmail);
 
     setLogin("");
     setPassword("");
     setRepeatPassword("");
     setEmail("");
 
-    onRegister({ login, password, email });
+    onRegister({ login, password, email, date, role_id });
     alert("Check your email to complete registration!");
   };
-  // const sha256script = document.createElement('script');
-  // sha256script.src='http://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js'
-  // console.log(sha256)
+
   return (
-    <form onSubmit={onSubmit}>
+    <form action="/activated" onSubmit={onSubmit}>
       <div className="formControl">
         <label>Login</label>
         <input
