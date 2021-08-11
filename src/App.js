@@ -7,9 +7,10 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Threads from "./components/Threads/Threads";
 import Posts from "./components/Posts/Posts";
-import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
 import Navbar from "./components/Navbar/Navbar";
-import Activated from "./components/Activated/Activated";
+import Register from "./components/RegisterForm/Register/Register";
+// import ActivateAccoutForm from "./components/RegisterForm/ActivateAccoutForm";
+// import UserDataForm from "./components/RegisterForm/UserDataForm";
 const App = () => {
   const [users, setUsers] = useState([]);
   const [threads, setThreads] = useState([]);
@@ -98,11 +99,9 @@ const App = () => {
   return (
     <Router>
       <Navbar />
-      <Route exact path="/activated">
-        <Activated />
-      </Route>
-      <Route exact path="/registration">
-        <RegistrationForm
+
+      <Route exact path="/register">
+        <Register
           getCurrentDate={getCurrentDate}
           onRegister={registerNewUser}
           users={users}

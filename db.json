@@ -55,16 +55,31 @@
       "registration_date": "10 may 2020"
     },
     {
-      "login": "bogdan",
+      "login": "Hyena",
       "password": "aaaCCC22W@@ad!x",
-      "email": "batrizgasssxming@gmail.com",
-      "date": "22:3:4 10 Aug 2021",
+      "email": "hyena@gmail.com",
+      "date": "16:24:38 11 Aug 2021",
       "role_id": 2,
+      "activation_code": "515",
       "id": 2
+    },
+    {
+      "login": "Grubson",
+      "password": "aaaCCC22W@@ad!x",
+      "email": "gruby@gmail.com",
+      "date": "16:26:22 11 Aug 2021",
+      "role_id": 2,
+      "activation_code": "265",
+      "id": 3
     }
   ],
   "activationLinks": [
     {
+      "id": 0,
+      "activationLink": "asidj39uunxasuunx"
+    },
+    {
+      "id": 1,
       "activationLink": "asidj39uunxasuunx"
     }
   ],

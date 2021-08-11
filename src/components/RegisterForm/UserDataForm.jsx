@@ -2,11 +2,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 import { useParams, Link } from "react-router-dom";
-import "./registrationForm.css";
+// import "./userDataForm.css";
 
 const sha256 = require("sha256");
 
-const RegistrationForm = ({ onRegister, users, getCurrentDate }) => {
+const UserDataForm = ({ onRegister, users, getCurrentDate, nextStep }) => {
   const [login, setLogin] = useState("");
   const [validLogin, setValidLogin] = useState(false);
 
@@ -96,15 +96,19 @@ const RegistrationForm = ({ onRegister, users, getCurrentDate }) => {
   }, [email]);
 
   const onSubmit = (e) => {
+    e.preventDefault();
     const message = formValidation(login, password, repeatPassword, email);
     if (message) {
       alert(message);
-      e.preventDefault();
+
       return;
     }
+
     const date = getCurrentDate();
     const role_id = 2;
     const hashPassword = sha256(password);
+    const activation_code = Math.floor(Math.random() * 1000 + 1).toString();
+
     console.log("Password: ", hashPassword);
 
     setLogin("");
@@ -112,12 +116,13 @@ const RegistrationForm = ({ onRegister, users, getCurrentDate }) => {
     setRepeatPassword("");
     setEmail("");
 
-    onRegister({ login, password, email, date, role_id });
-    alert("Check your email to complete registration!");
+    onRegister({ login, password, email, date, role_id, activation_code });
+
+    nextStep();
   };
 
   return (
-    <form action="/activated" onSubmit={onSubmit}>
+    <form onSubmit={onSubmit}>
       <div className="formControl">
         <label>Login</label>
         <input
@@ -154,9 +159,10 @@ const RegistrationForm = ({ onRegister, users, getCurrentDate }) => {
           onChange={(el) => setEmail(el.target.value)}
         />
       </div>
+
       <button type="submit">Register</button>
     </form>
   );
 };
 
-export default RegistrationForm;
+export default UserDataForm;
